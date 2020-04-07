@@ -1,16 +1,13 @@
 import org.flywaydb.gradle.task.FlywayMigrateTask
 
 buildscript {
-    ext {
-        springBootVersion = "2.0.6.RELEASE"
-    }
     dependencies {
         classpath 'mysql:mysql-connector-java:8.0.13'
     }
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.0.6.RELEASE'
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id "org.flywaydb.flyway" version "5.2.1"
     id 'java'
@@ -21,23 +18,14 @@ repositories {
 }
 
 dependencies {
-    // Spring/Framework Dependencies
-    // compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
-    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.14.Final'
-    compile group: 'org.springframework', name: 'spring-web', version: '5.0.9.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.9.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.1.1.RELEASE'
     compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.7")
 
-    // DB Dependencies
-    compile("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
-    compile("mysql:mysql-connector-java:6.0.6")
+    //compile("org.springframework.boot:spring-boot-starter-jdbc:2.2.2.RELEASE")
+    //compile("mysql:mysql-connector-java:6.0.6")
 
-    // Actuator Dependencies
-    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
-
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'mysql:mysql-connector-java'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
