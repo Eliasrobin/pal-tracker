@@ -13,8 +13,15 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+<<<<<<< HEAD
     - name: Make gradlew executable
       run: chmod +x ./gradlew
+=======
+    - name: Create test database
+      run: |
+        mysql -uroot -proot < databases/tracker/create_databases.sql
+        ./gradlew testMigrate
+>>>>>>> 1511056... Add task for migrating databases
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish artifact
